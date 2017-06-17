@@ -1,0 +1,57 @@
+<div class="row">
+
+
+    {{#foreach posts}}
+
+        <div class="col-md-4 col-sm-6">
+
+
+            <a href="{{url}}">
+
+                <div class="list-post-item">
+                    {{#if image}}
+                        <div class="underlay"
+                             style="background-image: url({{image}});background-size: cover;opacity: 0.8;"></div>
+                    {{/if}}
+
+                    <header class="">
+                        <h2 class="">{{title}}</h2>
+                    </header>
+
+
+                    <section class="">
+                        <p>{{excerpt words="45"}}</p>
+
+                    </section>
+
+
+                    <footer class="">
+                        <time class="post-date"
+                              datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMMM YYYY"}}</time>
+                    </footer>
+                </div>
+
+            </a>
+
+        </div>
+
+    {{/foreach}}
+
+    <div class="col-md-4 col-sm-6">
+
+
+        <a href="/map">
+            <div id="map" class="list-post-item">
+                <header class="">
+                    <h2 class="">Map</h2>
+                </header>
+                <section class="">
+                    <p>See where we are ...</p>
+                </section>
+            </div>
+        </a>
+    </div>
+</div>
+
+{{!-- Previous/next page links - displayed on every page --}}
+{{pagination}}

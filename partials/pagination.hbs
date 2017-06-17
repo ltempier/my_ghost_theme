@@ -1,0 +1,26 @@
+<div class="row pagination-custom" role="navigation">
+
+
+        <span class="page-number">
+            Page {{page}}/{{pages}}
+        </span>
+
+
+    <div class="btn-group">
+
+        {{#if prev}}
+            <a class="btn btn-custom" href="{{page_url prev}}">
+                <i class="glyphicon glyphicon-triangle-left"></i>
+            </a>
+        {{/if}}
+
+        {{#if next}}
+            <a class="btn btn-custom" href="{{page_url next}}">
+                <i class="glyphicon glyphicon-triangle-right"></i>
+            </a>
+        {{/if}}
+
+    </div>
+
+
+</div>

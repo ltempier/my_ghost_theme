@@ -1,0 +1,14 @@
+{
+  "name": "tdm-ghost-theme",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "ghost": ">=0.9.0 <1.0.0"
+  },
+  "author": {
+    "name": "Laurent Tempier"
+  },
+  "scripts": {
+    "build": "bash ./build.sh"
+  }
+}

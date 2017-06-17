@@ -1,0 +1,65 @@
+{{!< default}}
+
+
+{{#post}}
+
+    <div class="post-title">
+            {{title}}
+
+
+
+        {{#if image}}
+            <div class="underlay" style="background-image: url({{image}});background-size: cover;">
+            </div>
+        {{/if}}
+    </div>
+
+    <div class="container post-content">
+        <div class="row">
+            <div class="col-sm-12">
+                {{content}}
+            </div>
+        </div>
+    </div>
+
+
+    <div class="post-footer">
+
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-xs-4">
+                    {{#next_post}}
+                        <a class="post-footer-link" href="{{url}}">
+                            <h3>{{title}}</h3>
+                            <p>{{excerpt words="19"}} ...</p>
+                        </a>
+                    {{/next_post}}
+                </div>
+
+                <div class="col-xs-4 home-link">
+                    <a class="post-footer-link" href="{{@blog.url}}">
+                        <i class="glyphicon glyphicon-home"></i>
+                    </a>
+                </div>
+
+
+                <div class="col-xs-4">
+                    {{#prev_post}}
+                        <a class="post-footer-link" href="{{url}}">
+                            <h3>{{title}}</h3>
+                            <p>{{excerpt words="19"}} ...</p>
+                        </a>
+                    {{/prev_post}}
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+{{/post}}
