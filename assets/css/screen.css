@@ -54,7 +54,12 @@ a:link {
     border: solid 3px black;
     margin-bottom: 25px;
     padding: 15px;
-    min-height: 250px;
+    min-height: 300px;
+}
+
+.list-post-item a{
+    color: black;
+    text-decoration: none;
 }
 
 .list-post-item .post-date {
@@ -63,12 +68,18 @@ a:link {
 }
 
 .list-post-item:hover {
-    background-color: yellow;
+    border-style: dotted;
+    /*background-color: yellow;*/
 }
 
 .list-post-item#map:hover {
+    /*border-color: green;*/
     background-color: green;
     color: white;
+}
+
+.tag-container {
+    margin-left: -3px;
 }
 
 .underlay {
@@ -98,10 +109,11 @@ a:link {
 }
 
 .post-footer {
-    background: #000;
+    border-top: solid 3px black;
+    background: white;
     margin-top: 10px;
-    padding: 50px 0 80px 0;
-    color: white;
+    padding: 40px 0 50px 0;
+    color: black;
 
     /*background-image: url("../images/pattern-1.png");*/
     /*background-repeat: repeat;*/
@@ -115,26 +127,29 @@ a:link {
 }
 
 .post-footer .home-link i {
-    border: solid 3px black;
+    border: solid 3px white;
     border-radius: 100px;
     margin-left: -6px;
     margin-top: -6px;
-
-    padding: 8px  12px 12px 8px ;
+    padding: 8px 12px 12px 8px;
 }
 
 .post-footer .home-link i:hover {
-    border: solid 3px white;
+    border: solid 3px black;
 }
 
 .post-footer a {
-    color: white;
-    text-decoration: none;
+    color: black;
+    /*text-decoration: none;*/
 }
 
 .post-footer a:hover {
-    color: white;
-    text-decoration: none;
+    color: black;
+    /*text-decoration: none;*/
+}
+
+.post-footer .txt-right{
+    text-align: right;
 }
 
 .pagination-custom {
@@ -155,7 +170,7 @@ a:link {
 }
 
 .btn-custom {
-    color: white;
+    color: white !important;
     background-color: black;
     border: solid 3px black;
     border-radius: 0;
@@ -164,9 +179,17 @@ a:link {
 }
 
 .btn-custom:hover {
-    color: black;
+    color: black !important;;
     background-color: white;
     border: solid 3px black;
+}
+
+@media (min-width: 768px) {
+
+    .container-small {
+        width: 700px;
+    }
+
 }
 
 @media (max-width: 768px) {
