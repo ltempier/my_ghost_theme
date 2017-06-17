@@ -73,7 +73,7 @@ a:link {
 }
 
 .list-post-item#map:hover {
-    /*border-color: green;*/
+    border-style: solid;
     background-color: green;
     color: white;
 }
