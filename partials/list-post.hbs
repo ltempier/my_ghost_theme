@@ -14,16 +14,19 @@
                              style="background-image: url({{image}});background-size: cover;opacity: 0.8;"></div>
                     {{/if}}
 
-                    <header class="">
+
+                    <div class="">
                         <h2 class="">{{title}}</h2>
-                    </header>
+                    </div>
 
 
-                    <section class="">
+                    <div class="">
                         <p>{{excerpt words="45"}}</p>
+                    </div>
 
-                    </section>
-
+                    <div>
+                        {{> "tags"}}
+                    </div>
 
                     <footer class="">
                         <time class="post-date"
