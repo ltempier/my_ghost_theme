@@ -1,32 +1,25 @@
 <div class="row">
 
-
     {{#foreach posts}}
 
         <div class="col-md-4 col-sm-6">
 
-
             <a href="{{url}}">
 
                 <div class="list-post-item">
+
                     {{#if image}}
                         <div class="underlay"
                              style="background-image: url({{image}});background-size: cover;opacity: 0.8;"></div>
                     {{/if}}
 
 
-                    <div class="">
-                        <h2 class="">{{title}}</h2>
-                    </div>
+                    <h2 class="">{{title}}</h2>
 
 
-                    <div class="">
-                        <p>{{excerpt words="45"}}</p>
-                    </div>
+                    <p>{{excerpt words="40"}} ...</p>
 
-                    <div>
-                        {{> "tags"}}
-                    </div>
+                    {{> "tags"}}
 
                     <footer class="">
                         <time class="post-date"
