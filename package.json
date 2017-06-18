@@ -9,6 +9,7 @@
     "name": "Laurent Tempier"
   },
   "scripts": {
-    "build": "bash ./build.sh"
+    "build": "bash ./build.sh",
+    "pre-push": "npm run bluid"
   }
 }
