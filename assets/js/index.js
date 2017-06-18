@@ -13,24 +13,35 @@
         $postContent.fitVids();
 
         if (_GALLERY) {
-            var $gallery = $('#gallery');
-            $.each(_GALLERY, function (item) {
 
-                var $item = $("<li class='gallery-item'></li>");
-                $item.append($('<img src="' + this.src + '"/>'));
-                //$item.append($('<span>' + this.legend + '</span>'));
+            var $gallery = $('#gallery');
+            $.each(_GALLERY, function () {
+
+                var html = [
+                    '<li class="gallery-item">',
+                    '<a href="' + this.src + '">',
+                    '<img src="' + this.src + '"/>',
+                    '</a>',
+                    '</li>'
+                ].join('');
+
+                var $item = $(html);
+
+                $item.magnificPopup({
+                    delegate: 'a',
+                    type: 'image'
+                });
 
                 $gallery.append($item);
             });
 
-            $gallery.imagesLoaded().done(function () {
+
+            $gallery.imagesLoaded(function () {
                 $gallery.isotope({
-                    //percentPosition: true,
-                    itemSelector: '.gallery-item',
-                    //masonry: {
-                    //    columnWidth: '.grid-sizer'
-                    //}
+                    itemSelector: '.gallery-item'
                 });
+
+
             });
 
         }
