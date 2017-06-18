@@ -17,7 +17,12 @@
                     <h2 class="">{{title}}</h2>
 
 
-                    <p>{{excerpt words="40"}} ...</p>
+                    {{#if featured}}
+
+                    {{else}}
+                        <p>{{excerpt words="40"}} ...</p>
+                    {{/if}}
+
 
                     {{> "tags"}}
 

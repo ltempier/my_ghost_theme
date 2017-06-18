@@ -26,17 +26,18 @@ a:link {
     color: black;
 }
 
-.tag-title-container{
+.tag-title-container {
     font-family: Pacifico, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 30px;
     text-align: center;
     margin-top: -20px;
     margin-bottom: 35px;
 }
-.tag-title{
+
+.tag-title {
     color: white;
     background-color: black;
-    padding: 2px 20px 10px 10px ;
+    padding: 2px 20px 10px 10px;
 
 }
 
@@ -71,7 +72,7 @@ a:link {
     min-height: 300px;
 }
 
-.list-post-item a{
+.list-post-item a {
     color: black;
     text-decoration: none;
 }
@@ -163,7 +164,7 @@ a:link {
     /*text-decoration: none;*/
 }
 
-.post-footer .txt-right{
+.post-footer .txt-right {
     text-align: right;
 }
 
@@ -199,6 +200,26 @@ a:link {
     border: solid 3px black;
 }
 
+.grid-sizer {
+    width: 25%;
+}
+
+.gallery-item {
+    width: 31%;
+    vertical-align: top;
+    margin: 5px;
+    list-style: none;
+    text-align: center;
+    /*border: solid 3px black;*/
+    /*background-color: black;*/
+    color: white;
+}
+
+.gallery-item img {
+    display: block;
+    width: 100%;
+}
+
 @media (min-width: 768px) {
     .container-small {
         width: 700px;
@@ -211,13 +232,18 @@ a:link {
         margin: 20px 0 15px 0;
     }
 
-    .tag-title-container{
+    .tag-title-container {
         font-size: 20px;
         margin-top: 20px;
     }
 
     .list-post-item {
         margin-bottom: 10px;
+    }
+
+
+    .gallery-item {
+        width: 31%;
     }
 }
 
@@ -227,12 +253,17 @@ a:link {
         margin: 15px 0 15px 0;
     }
 
-    .tag-title-container{
+    .tag-title-container {
         font-size: 15px;
         margin-bottom: 20px;
     }
 
     .post-footer {
         font-size: 80%;
+    }
+
+
+    .gallery-item {
+        width: 30.5%;
     }
 }

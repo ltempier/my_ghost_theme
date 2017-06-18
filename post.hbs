@@ -1,7 +1,7 @@
 {{!< default}}
 
-
 {{#post}}
+
 
     <div class="post-title">
         {{title}}
@@ -12,13 +12,28 @@
         {{/if}}
     </div>
 
-    <div class="container container-small post-content">
-        <div class="row">
-            <div class="col-sm-12">
-                {{content}}
+
+    {{#if featured}}
+
+        <div class="container gallery-container">
+
+            <div id="gallery"></div>
+
+            {{content}}
+        </div>
+
+    {{else}}
+
+        <div class="container container-small post-content">
+            <div class="row">
+                <div class="col-sm-12">
+                    {{content}}
+                </div>
             </div>
         </div>
-    </div>
+
+    {{/if}}
+
 
 
     <div class="post-footer">
@@ -57,6 +72,7 @@
         </div>
 
     </div>
+
 
 
 
