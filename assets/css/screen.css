@@ -26,6 +26,13 @@ a:link {
     color: black;
 }
 
+.tag-title{
+    font-size: 40px;
+    letter-spacing: -2px;
+    text-align: center;
+    color: black;
+}
+
 .page-title a {
     color: black;
 }
@@ -68,7 +75,8 @@ a:link {
 }
 
 .list-post-item:hover {
-    border-style: dotted;
+    /*border-style: dotted ;*/
+    /*border-width: 3px;*/
     /*background-color: yellow;*/
 }
 
@@ -198,6 +206,10 @@ a:link {
         margin: 20px 0 15px 0;
     }
 
+    .tag-title{
+        font-size: 30px;
+    }
+
     .list-post-item {
         margin-bottom: 10px;
     }
@@ -207,6 +219,10 @@ a:link {
     .page-title {
         font-size: 30px;
         margin: 15px 0 15px 0;
+    }
+
+    .tag-title{
+        font-size: 20px;
     }
 
     .post-footer {
