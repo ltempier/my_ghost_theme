@@ -12,40 +12,59 @@
         var $postContent = $(".post-content");
         $postContent.fitVids();
 
-        if (_GALLERY) {
-
-            var $gallery = $('#gallery');
-            $.each(_GALLERY, function () {
-
-                var html = [
-                    '<li class="gallery-item">',
-                    '<a href="' + this.src + '">',
-                    '<img src="' + this.src + '"/>',
-                    '</a>',
-                    '</li>'
-                ].join('');
-
-                var $item = $(html);
-
-                $item.magnificPopup({
-                    delegate: 'a',
-                    type: 'image'
-                });
-
-                $gallery.append($item);
-            });
-
-
-            $gallery.imagesLoaded(function () {
-                $gallery.isotope({
-                    itemSelector: '.gallery-item'
-                });
-
-
-            });
+        try {
+            galleryProcess()
+        } catch (e) {
 
         }
 
     });
 
 })(jQuery);
+
+
+function galleryProcess() {
+
+    if (_GALLERY) {
+        var $container = $('.container');
+        $container.attr('class', 'container gallery-container');
+        var $gallery = $('<div id="gallery"></div>');
+
+        $container.find('.post-content').append($gallery);
+
+        $.each(_GALLERY, function () {
+            var html = [
+                '<li class="gallery-item">',
+                '<a href="' + this.src + '">',
+                '<img src="' + this.src + '"/>',
+                '</a>',
+                '</li>'
+            ].join('');
+
+            var $item = $(html);
+
+            $gallery.append($item);
+        });
+
+        $gallery.magnificPopup({
+            delegate: 'a',
+            type: 'image',
+            gallery: {
+                enabled: true,
+                preload: [0, 2], // read about this option in next Lazy-loading section
+                navigateByImgClick: true,
+                arrowMarkup: '', // markup of an arrow button
+                tPrev: 'Previous (Left arrow key)',
+                tNext: 'Next (Right arrow key)',
+                tCounter: '<span class="mfp-counter">%curr% / %total%</span>' // markup of counter
+            }
+        });
+
+
+        $gallery.imagesLoaded(function () {
+            $gallery.isotope({
+                itemSelector: '.gallery-item'
+            });
+        });
+    }
+}

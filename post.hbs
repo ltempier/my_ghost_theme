@@ -13,27 +13,13 @@
     </div>
 
 
-    {{#if featured}}
-
-        <div class="container gallery-container">
-
-            <div id="gallery"></div>
-
-            {{content}}
-        </div>
-
-    {{else}}
-
-        <div class="container container-small post-content">
-            <div class="row">
-                <div class="col-sm-12">
-                    {{content}}
-                </div>
+    <div class="container container-small">
+        <div class="row">
+            <div class="col-sm-12 post-content">
+                {{content}}
             </div>
         </div>
-
-    {{/if}}
-
+    </div>
 
 
     <div class="post-footer">
