@@ -25,12 +25,9 @@
 
 function galleryProcess() {
 
-    if (_GALLERY) {
-        var $container = $('.container');
-        $container.attr('class', 'container gallery-container');
-        var $gallery = $('<div id="gallery"></div>');
+    if (_GALLERY && _GALLERY.length) {
 
-        $container.find('.post-content').append($gallery);
+        var $gallery = $('#gallery');
 
         $.each(_GALLERY, function () {
             var html = [
@@ -41,9 +38,7 @@ function galleryProcess() {
                 '</li>'
             ].join('');
 
-            var $item = $(html);
-
-            $gallery.append($item);
+            $gallery.append(html);
         });
 
         $gallery.magnificPopup({
