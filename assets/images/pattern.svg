@@ -1,0 +1,22 @@
+<svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
+
+ <!--
+
+ <g>
+  <rect fill="red" height="8" width="8" y="0" x="0"/>
+ </g>
+
+ <defs>
+   <pattern id="Triangle" width="10" height="10" patternUnits="userSpaceOnUse">
+      <polygon points="5,0 10,10 0,10"/>
+   </pattern>
+ </defs>
+ <circle cx="60" cy="60" r="50" fill="url(#Triangle)"/>
+
+ -->
+
+ <g>
+  <line x1="0" y1="0" x2="20" y2="20" stroke-width="0.4" stroke="#4CAF50" fill="none" />
+ </g>
+
+</svg>

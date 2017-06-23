@@ -9,8 +9,7 @@
                 <div class="list-post-item">
 
                     {{#if image}}
-                        <div class="underlay"
-                             style="background-image: url({{image}});background-size: cover;opacity: 0.8;"></div>
+                        <div class="underlay selectable" style="background-image: url({{image}});"></div>
                     {{/if}}
 
 
@@ -39,7 +38,6 @@
 
     <div class="col-md-4 col-sm-6">
 
-
         <a href="/map">
             <div id="map" class="list-post-item">
                 <header class="">
@@ -51,6 +49,7 @@
             </div>
         </a>
     </div>
+
 </div>
 
 {{!-- Previous/next page links - displayed on every page --}}

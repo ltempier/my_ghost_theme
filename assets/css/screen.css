@@ -50,6 +50,9 @@ a:link {
 }
 
 .post-title {
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+
     position: relative;
     font-family: Pacifico, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 70px;
@@ -59,11 +62,24 @@ a:link {
     color: black;
     border-bottom: solid 3px black;
     padding: 60px 0 75px 0;
+    width: 100%;
+}
+
+.post-title.fixed {
+    font-size: 30px;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    background: black;
+    color: white;
+    opacity: 0.9;
+    padding: 3px 0 10px 0;
 }
 
 .list-post-item {
     color: black;
     position: relative;
+    display: block;
     width: 100%;
     height: 100%;
     border: solid 3px black;
@@ -100,11 +116,17 @@ a:link {
 
 .underlay {
     position: absolute;
+    background-repeat: repeat;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
+    opacity: 0.3;
+}
+
+.underlay.selectable {
+    opacity: 1;
 }
 
 .post-content {
@@ -243,7 +265,8 @@ a:link {
 }
 
 @media (max-width: 768px) {
-    .page-title {
+    .page-title,
+    .post-title {
         font-size: 50px;
         margin: 20px 0 15px 0;
     }
@@ -263,7 +286,8 @@ a:link {
 }
 
 @media (max-width: 500px) {
-    .page-title {
+    .page-title,
+    .post-title {
         font-size: 35px;
         margin: 15px 0 15px 0;
     }

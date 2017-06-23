@@ -24,9 +24,37 @@
 
         }
 
+        try {
+            postTitleProcess()
+        } catch (e) {
+
+        }
+
     });
 
 })(jQuery);
+
+
+function postTitleProcess() {
+    var $postTitle = $('.post-title');
+    if ($postTitle) {
+        checkScroll();
+        window.onscroll = function () {
+            checkScroll();
+        }
+
+        function checkScroll() {
+            var yOffset = 10;
+            var currYOffSet = window.pageYOffset;
+            if (yOffset < currYOffSet) {
+                $postTitle.attr('class', 'post-title fixed')
+            }
+            else {
+                $postTitle.attr('class', 'post-title')
+            }
+        }
+    }
+}
 
 
 function carouselProcess() {
