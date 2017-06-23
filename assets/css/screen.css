@@ -195,7 +195,7 @@ a:link {
 }
 
 .btn-custom {
-    color: white;
+    color: white !important;
     background-color: black;
     border: solid 3px black;
     border-radius: 0;
@@ -203,7 +203,7 @@ a:link {
 
 .btn-custom:hover,
 .btn-custom:focus {
-    color: black;
+    color: black !important;
     background-color: white;
     border: solid 3px black;
 }
