@@ -43,7 +43,11 @@
                     {{#next_post}}
                         <a class="post-footer-link" href="{{url}}">
                             <h3>{{title}}</h3>
-                            <p>{{excerpt words="19"}} ...</p>
+                            {{#if featured}}
+
+                            {{else}}
+                                <p>{{excerpt words="19"}} ...</p>
+                            {{/if}}
                         </a>
                     {{/next_post}}
                 </div>
@@ -59,7 +63,11 @@
                     {{#prev_post}}
                         <a class="post-footer-link" href="{{url}}">
                             <h3>{{title}}</h3>
-                            <p>{{excerpt words="19"}} ...</p>
+                            {{#if featured}}
+
+                            {{else}}
+                                <p>{{excerpt words="19"}} ...</p>
+                            {{/if}}
                         </a>
                     {{/prev_post}}
                 </div>

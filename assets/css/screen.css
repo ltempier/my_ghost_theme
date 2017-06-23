@@ -112,10 +112,18 @@ a:link {
     height: 100%;
 }
 
+.post-content p {
+    text-align: justify;
+}
+
+.post-content mark {
+    background-color: rgba(165, 217, 255, 0.3);
+}
+
 .post-content img {
     max-width: 100%;
     display: block;
-    margin: 0 auto;
+    margin: 25px auto;
 }
 
 .vertical-line {
@@ -183,22 +191,28 @@ a:link {
     padding: 6px 12px;
     border: solid 3px black;
     user-select: none;
+    margin-right: 3px;
 }
 
 .btn-custom {
-    color: white !important;
+    color: white;
     background-color: black;
     border: solid 3px black;
     border-radius: 0;
-    margin-left: 3px !important;
-
 }
 
 .btn-custom:hover {
-    color: black !important;;
+    color: black;
     background-color: white;
     border: solid 3px black;
 }
+
+.btn-group .btn-custom{
+    margin-left: 3px !important;
+}
+
+
+
 
 .grid-sizer {
     width: 25%;

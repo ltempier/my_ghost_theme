@@ -18,9 +18,27 @@
 
         }
 
+        try {
+            carouselProcess()
+        } catch (e) {
+
+        }
+
     });
 
 })(jQuery);
+
+
+function carouselProcess() {
+    $('.carousel-gallery').each(function () {
+        $(this).slick({
+            autoplay: true,
+            infinite: true,
+            prevArrow: '<button class="btn slick-arrow slick-prev"><i class="glyphicon glyphicon-triangle-left"></i></button>',
+            nextArrow: '<button class="btn slick-arrow slick-next"><i class="glyphicon glyphicon-triangle-right"></i></button>'
+        });
+    })
+}
 
 
 function galleryProcess() {
