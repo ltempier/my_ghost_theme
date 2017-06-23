@@ -32,8 +32,11 @@
 function carouselProcess() {
     $('.carousel-gallery').each(function () {
         $(this).slick({
-            autoplay: true,
             infinite: true,
+            speed: 800,
+            fade: true,
+            adaptiveHeight: true,
+            autoplay: true,
             prevArrow: '<button class="btn slick-arrow slick-prev"><i class="glyphicon glyphicon-triangle-left"></i></button>',
             nextArrow: '<button class="btn slick-arrow slick-next"><i class="glyphicon glyphicon-triangle-right"></i></button>'
         });

@@ -1,4 +1,10 @@
+.carousel-gallery {
 
+}
+
+.carousel-gallery img {
+
+}
 
 .slick-arrow {
     position: absolute;
@@ -15,7 +21,8 @@
     border: solid 3px white;
 }
 
-.slick-arrow:hover {
+.slick-arrow:hover,
+.slick-arrow:focus {
     /*color: white;*/
     /*border: solid 3px white;*/
 
