@@ -101,6 +101,10 @@ a:link {
     text-decoration: none;
 }
 
+.list-post-item p {
+   text-align: justify;
+}
+
 .list-post-item .post-date {
     position: absolute;
     bottom: 10px;
