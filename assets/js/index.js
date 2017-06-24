@@ -66,7 +66,7 @@ function carouselProcess() {
             $(this).slick({
                 //infinite: true,
                 //speed: 800,
-                fade: true,
+                //fade: true,
                 adaptiveHeight: true,
                 //autoplay: true,
                 prevArrow: '<button class="btn slick-arrow slick-prev"><i class="glyphicon glyphicon-triangle-left"></i></button>',
