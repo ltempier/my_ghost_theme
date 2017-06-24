@@ -72,8 +72,9 @@ a:link {
     z-index: 10;
     background: black;
     color: white;
-    opacity: 0.9;
+    opacity: 0.7;
     padding: 3px 0 10px 0;
+    margin-top: 0 !important;
 }
 
 .list-post-item {
@@ -268,7 +269,7 @@ a:link {
     .page-title,
     .post-title {
         font-size: 50px;
-        margin: 20px 0 15px 0;
+        padding: 20px 0 15px 0;
     }
 
     .tag-title-container {
@@ -289,7 +290,7 @@ a:link {
     .page-title,
     .post-title {
         font-size: 35px;
-        margin: 15px 0 15px 0;
+        padding: 15px 0 15px 0;
     }
 
     .tag-title-container {

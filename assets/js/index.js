@@ -37,11 +37,12 @@
 
 function postTitleProcess() {
     var $postTitle = $('.post-title');
-    if ($postTitle) {
+    if ($postTitle.length) {
         checkScroll();
-        window.onscroll = function () {
+        window.onscroll = function (e) {
+            e.preventDefault();
             checkScroll();
-        }
+        };
 
         function checkScroll() {
             var yOffset = 10;
@@ -58,17 +59,41 @@ function postTitleProcess() {
 
 
 function carouselProcess() {
-    $('.carousel-gallery').each(function () {
-        $(this).slick({
-            infinite: true,
-            speed: 800,
-            fade: true,
-            adaptiveHeight: true,
-            autoplay: true,
-            prevArrow: '<button class="btn slick-arrow slick-prev"><i class="glyphicon glyphicon-triangle-left"></i></button>',
-            nextArrow: '<button class="btn slick-arrow slick-next"><i class="glyphicon glyphicon-triangle-right"></i></button>'
+
+    if ($('.carousel-gallery').length) {
+
+        $('.carousel-gallery').each(function () {
+            $(this).slick({
+                //infinite: true,
+                //speed: 800,
+                fade: true,
+                adaptiveHeight: true,
+                //autoplay: true,
+                prevArrow: '<button class="btn slick-arrow slick-prev"><i class="glyphicon glyphicon-triangle-left"></i></button>',
+                nextArrow: '<button class="btn slick-arrow slick-next"><i class="glyphicon glyphicon-triangle-right"></i></button>'
+            });
         });
-    })
+
+        $(document).keydown(function (e) {
+            switch (e.which) {
+                case 37: // left
+                    $('.carousel-gallery').each(function () {
+                        if ($(this).visible(true)) {
+                            this.slick.slickPrev()
+                        }
+                    });
+                    break;
+                case 39: // right
+                    $('.carousel-gallery').each(function () {
+                        if ($(this).visible(true)) {
+                            this.slick.slickNext()
+                        }
+                    });
+                    break;
+            }
+        });
+    }
+
 }
 
 
