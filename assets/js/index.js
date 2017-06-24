@@ -91,7 +91,7 @@ function carouselProcess() {
                 //speed: 800,
                 //fade: true,
                 adaptiveHeight: true,
-                lazyLoad:"progressive",
+                //lazyLoad:"progressive",
                 //autoplay: true,
                 prevArrow: '<button class="btn slick-arrow slick-prev"><i class="glyphicon glyphicon-triangle-left"></i></button>',
                 nextArrow: '<button class="btn slick-arrow slick-next"><i class="glyphicon glyphicon-triangle-right"></i></button>'
