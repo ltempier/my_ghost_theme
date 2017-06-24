@@ -12,11 +12,13 @@
         var $postContent = $(".post-content");
         $postContent.fitVids();
 
+
         try {
-            galleryProcess()
+            postTitleProcess()
         } catch (e) {
 
         }
+
 
         try {
             carouselProcess()
@@ -25,10 +27,11 @@
         }
 
         try {
-            postTitleProcess()
+            galleryProcess()
         } catch (e) {
 
         }
+
 
         //try {
         //    konamiProcess()
@@ -88,6 +91,7 @@ function carouselProcess() {
                 //speed: 800,
                 //fade: true,
                 adaptiveHeight: true,
+                lazyLoad:"progressive",
                 //autoplay: true,
                 prevArrow: '<button class="btn slick-arrow slick-prev"><i class="glyphicon glyphicon-triangle-left"></i></button>',
                 nextArrow: '<button class="btn slick-arrow slick-next"><i class="glyphicon glyphicon-triangle-right"></i></button>'
