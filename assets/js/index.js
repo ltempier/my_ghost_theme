@@ -64,7 +64,7 @@ function carouselProcess() {
 
         $('.carousel-gallery').each(function () {
             $(this).slick({
-                //infinite: true,
+                infinite: true,
                 //speed: 800,
                 //fade: true,
                 adaptiveHeight: true,
