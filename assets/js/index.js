@@ -98,14 +98,14 @@ function carouselProcess() {
             switch (e.which) {
                 case 37: // left
                     $('.carousel-gallery').each(function () {
-                        if ($(this).visible()) {
+                        if ($(this).visible(false, true)) {
                             this.slick.slickPrev()
                         }
                     });
                     break;
                 case 39: // right
                     $('.carousel-gallery').each(function () {
-                        if ($(this).visible()) {
+                        if ($(this).visible(false, true)) {
                             this.slick.slickNext()
                         }
                     });
