@@ -30,9 +30,29 @@
 
         }
 
+        //try {
+        //    konamiProcess()
+        //} catch (e) {
+        //
+        //}
+
     });
 
 })(jQuery);
+
+
+function konamiProcess() {
+    var $items = $('.list-post-item');
+    if ($items.length) {
+        var $item = $($items[Math.floor(Math.random() * $items.length)]);
+
+        $item.addClass('hovered');
+        setTimeout(function () {
+            $item.removeClass('hovered');
+            konamiProcess()
+        }, 1000)
+    }
+}
 
 
 function postTitleProcess() {

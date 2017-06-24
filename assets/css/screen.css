@@ -77,7 +77,14 @@ a:link {
     margin-top: 0 !important;
 }
 
+.post-title.fixed .underlay {
+    background-image: none !important;
+}
+
 .list-post-item {
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+
     color: black;
     position: relative;
     display: block;
@@ -99,15 +106,19 @@ a:link {
     bottom: 10px;
 }
 
-.list-post-item:hover {
+.list-post-item:hover,
+.list-post-item.hovered {
     /*border-style: dotted ;*/
     /*border-width: 3px;*/
     /*background-color: yellow;*/
+
+    -moz-transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 .list-post-item#map:hover {
     border-style: solid;
-    background-color: green;
+    background-color: #9FBD98;
     color: white;
 }
 
@@ -117,17 +128,25 @@ a:link {
 
 .underlay {
     position: absolute;
-    background-repeat: repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
+
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
-    opacity: 0.3;
+}
+
+.underlay.repeat {
+    filter: grayscale(100%);
+    opacity: 0.1;
+    background-size: auto;
+    background-repeat: repeat;
 }
 
 .underlay.selectable {
-    opacity: 1;
+    opacity: 0.4;
 }
 
 .post-content {
