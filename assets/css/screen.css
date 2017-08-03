@@ -102,7 +102,7 @@ a:link {
 }
 
 .list-post-item p {
-   text-align: justify;
+    text-align: justify;
 }
 
 .list-post-item .post-date {
@@ -258,22 +258,25 @@ a:link {
     margin-left: 3px !important;
 }
 
-.grid-sizer {
-    width: 25%;
+/*.grid-sizer,*/
+/*.grid-item { width: 20%; }*/
+/*.grid-item--width2 { width: 40%; }*/
+
+.gallery-container {
+    /*margin: 0 !important;*/
+    padding: 0 !important;
 }
 
 .gallery-item {
-    width: 32%;
-    width: calc(33% - 10px);
-    width: -moz-calc(33% - 10px);
-    width: -webkit-calc(33% - 10px);
-
-    vertical-align: top;
-    margin: 5px;
+    /*width: 33%;*/
+    border: 0;
+    margin: 0;
+    /*vertical-align: top;*/
+    padding: 5px;
     list-style: none;
     text-align: center;
     /*border: solid 3px black;*/
-    /*background-color: black;*/
+    /*background-color: blue;*/
     color: white;
 }
 

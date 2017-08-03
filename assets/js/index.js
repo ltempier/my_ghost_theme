@@ -1,8 +1,5 @@
-/**
- * Main JS file for Casper behaviours
- */
+"use strict";
 
-/* globals jQuery, document */
 (function ($, undefined) {
     "use strict";
 
@@ -44,6 +41,11 @@
 })(jQuery);
 
 
+function imgurProcess() {
+
+}
+
+
 function konamiProcess() {
     var $items = $('.list-post-item');
     if ($items.length) {
@@ -66,16 +68,16 @@ function postTitleProcess() {
             e.preventDefault();
             checkScroll();
         };
+    }
 
-        function checkScroll() {
-            var yOffset = 10;
-            var currYOffSet = window.pageYOffset;
-            if (yOffset < currYOffSet) {
-                $postTitle.attr('class', 'post-title fixed')
-            }
-            else {
-                $postTitle.attr('class', 'post-title')
-            }
+    function checkScroll() {
+        var yOffset = 10;
+        var currYOffSet = window.pageYOffset;
+        if (yOffset < currYOffSet) {
+            $postTitle.attr('class', 'post-title fixed')
+        }
+        else {
+            $postTitle.attr('class', 'post-title')
         }
     }
 }
@@ -120,23 +122,42 @@ function carouselProcess() {
 
 }
 
+var bufferGallery = 0;
+function getGalleryItemWidth(div) {
+    div = div || 3;
+    var width = (100 / div) * _.random(1, div, false);
+    if (bufferGallery + width > 100) {
+        width = 100 - bufferGallery;
+        bufferGallery = 0
+    } else
+        bufferGallery += width;
+    return width
+}
+
 
 function galleryProcess() {
 
     if (_GALLERY && _GALLERY.length) {
-
         var $gallery = $('#gallery');
 
-        $.each(_GALLERY, function () {
-            var html = [
-                '<li class="gallery-item">',
+
+        var columnDivider = 5;
+        $gallery.append('<div class="gallery-sizer" style="width:' + 100 / columnDivider + '%"></div>');
+        $.each(_GALLERY, function (idx) {
+
+            //TODO remove
+            this.src = "http://localhost:2368/content/images/2017/06/gateau-pizza-alimentation-insolite.jpg";
+            this.idx = idx;
+
+            var $galleryItem = $('<li class="gallery-item">');
+            $galleryItem.css("width", getGalleryItemWidth(columnDivider) + "%")
+            $galleryItem.append([
                 '<a href="' + this.src + '">',
                 '<img src="' + this.src + '"/>',
-                '</a>',
-                '</li>'
-            ].join('');
+                '</a>'
+            ].join(''));
 
-            $gallery.append(html);
+            $gallery.append($galleryItem);
         });
 
         $gallery.magnificPopup({
@@ -153,10 +174,14 @@ function galleryProcess() {
             }
         });
 
-
         $gallery.imagesLoaded(function () {
             $gallery.isotope({
-                itemSelector: '.gallery-item'
+                itemSelector: '.gallery-item',
+                percentPosition: true,
+                masonry: {
+                    // set to the element
+                    columnWidth: '.gallery-sizer'
+                }
             });
         });
     }
