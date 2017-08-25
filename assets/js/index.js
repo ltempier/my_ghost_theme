@@ -74,10 +74,13 @@ function postTitleProcess() {
         var yOffset = 10;
         var currYOffSet = window.pageYOffset;
         if (yOffset < currYOffSet) {
-            $postTitle.attr('class', 'post-title fixed')
+            $postTitle.addClass('fixed')
+            $('.post-container').addClass('mt')
         }
         else {
             $postTitle.attr('class', 'post-title')
+            $postTitle.removeClass('fixed')
+            $('.post-container').removeClass('mt')
         }
     }
 }
@@ -140,17 +143,24 @@ function galleryProcess() {
     if (_GALLERY && _GALLERY.length) {
         var $gallery = $('#gallery');
 
+        //var columnDivider = 5;
+        //$gallery.append('<div class="gallery-sizer" style="width:' + 100 / columnDivider + '%"></div>');
+        $gallery.append('<div class="grid-sizer"></div>');
 
-        var columnDivider = 5;
-        $gallery.append('<div class="gallery-sizer" style="width:' + 100 / columnDivider + '%"></div>');
         $.each(_GALLERY, function (idx) {
 
             //TODO remove
-            this.src = "http://localhost:2368/content/images/2017/06/gateau-pizza-alimentation-insolite.jpg";
+            //this.src = "http://localhost:2368/content/images/2017/06/gateau-pizza-alimentation-insolite.jpg";
             this.idx = idx;
 
-            var $galleryItem = $('<li class="gallery-item">');
-            $galleryItem.css("width", getGalleryItemWidth(columnDivider) + "%")
+            var $galleryItem = $('<li class="gallery-item grid-item">');
+            //$galleryItem.css("width", getGalleryItemWidth(columnDivider) + "%")
+
+            var random = Math.random();
+            if (random > 0.5)
+                $galleryItem.addClass("grid-item-width2");
+
+
             $galleryItem.append([
                 '<a href="' + this.src + '">',
                 '<img src="' + this.src + '"/>',
@@ -176,11 +186,11 @@ function galleryProcess() {
 
         $gallery.imagesLoaded(function () {
             $gallery.isotope({
-                itemSelector: '.gallery-item',
+                itemSelector: '.grid-item',
                 percentPosition: true,
                 masonry: {
                     // set to the element
-                    columnWidth: '.gallery-sizer'
+                    columnWidth: '.grid-sizer'
                 }
             });
         });
