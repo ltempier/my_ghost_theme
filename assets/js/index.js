@@ -40,11 +40,30 @@
 
 })(jQuery);
 
-
 function imgurProcess() {
+    $('img').each(function () {
+        var $imgur = $("<div class='imgur-img-process'></div>");
+        var imgClass = $(this).attr('class');
 
+        $imgur.attr('class', imgClass);
+        $(this).attr('class', '');
+        $imgur.css('background', 'url("' + getImgurLight(this.src) + '") center center no-repeat');
+        $(this).wrap($imgur);
+
+    })
 }
 
+
+function getImgurLight(src) {
+    var srcRegex = new RegExp('imgur\.com/(.*)\.jpg', 'g');
+    if (srcRegex.test(src)) {
+        var light = src.split('/');
+        var id = light.pop().substring(0, 7);
+        light.push(id + 'h.jpg');
+        return light.join('/');
+    }
+    return src
+}
 
 function konamiProcess() {
     var $items = $('.list-post-item');
@@ -74,12 +93,12 @@ function postTitleProcess() {
         var yOffset = 10;
         var currYOffSet = window.pageYOffset;
         if (yOffset < currYOffSet) {
-            $postTitle.addClass('fixed')
+            $postTitle.addClass('fixed');
             $('.post-container').addClass('mt')
         }
         else {
-            $postTitle.attr('class', 'post-title')
-            $postTitle.removeClass('fixed')
+            $postTitle.attr('class', 'post-title');
+            $postTitle.removeClass('fixed');
             $('.post-container').removeClass('mt')
         }
     }
@@ -126,6 +145,7 @@ function carouselProcess() {
 }
 
 var bufferGallery = 0;
+
 function getGalleryItemWidth(div) {
     div = div || 3;
     var width = (100 / div) * _.random(1, div, false);
