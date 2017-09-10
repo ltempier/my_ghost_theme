@@ -262,36 +262,9 @@ a:link {
     margin-left: 3px !important;
 }
 
-.grid-sizer,
-.grid-item {
-    width: 33.33%;
-}
-
-.grid-item-width2 {
-    width: 66.66%;
-}
-
 .gallery-container {
-    /*margin: 0 !important;*/
-    padding: 0 !important;
-}
-
-.gallery-item {
-    /*width: 33%;*/
-    border: 0;
-    margin: 0;
-    /*vertical-align: top;*/
-    padding: 5px;
-    list-style: none;
-    text-align: center;
-    /*border: solid 3px black;*/
-    /*background-color: blue;*/
-    color: white;
-}
-
-.gallery-item img {
-    display: block;
-    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 @media (min-width: 768px) {
@@ -315,16 +288,9 @@ a:link {
     .list-post-item {
         margin-bottom: 10px;
     }
-
-    .grid-item {
-        width: 50%;
-    }
 }
 
 @media (max-width: 500px) {
-    .grid-item {
-        width: 100% !important;
-    }
 
     .page-title,
     .post-title {

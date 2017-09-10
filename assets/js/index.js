@@ -16,7 +16,6 @@
 
         }
 
-
         try {
             carouselProcess()
         } catch (e) {
@@ -144,75 +143,52 @@ function carouselProcess() {
 
 }
 
-var bufferGallery = 0;
-
-function getGalleryItemWidth(div) {
-    div = div || 3;
-    var width = (100 / div) * _.random(1, div, false);
-    if (bufferGallery + width > 100) {
-        width = 100 - bufferGallery;
-        bufferGallery = 0
-    } else
-        bufferGallery += width;
-    return width
-}
-
-
 function galleryProcess() {
 
     if (_GALLERY && _GALLERY.length) {
-        var $gallery = $('#gallery');
 
-        //var columnDivider = 5;
-        //$gallery.append('<div class="gallery-sizer" style="width:' + 100 / columnDivider + '%"></div>');
-        $gallery.append('<div class="grid-sizer"></div>');
-
-        $.each(_GALLERY, function (idx) {
-
-            //TODO remove
-            //this.src = "http://localhost:2368/content/images/2017/06/gateau-pizza-alimentation-insolite.jpg";
-            this.idx = idx;
-
-            var $galleryItem = $('<li class="gallery-item grid-item">');
-            //$galleryItem.css("width", getGalleryItemWidth(columnDivider) + "%")
-
+        //TODO remove
+        _GALLERY = _GALLERY.map(function (item, idx) {
             var random = Math.random();
-            if (random > 0.5)
-                $galleryItem.addClass("grid-item-width2");
-
-
-            $galleryItem.append([
-                '<a href="' + this.src + '">',
-                '<img src="' + this.src + '"/>',
-                '</a>'
-            ].join(''));
-
-            $gallery.append($galleryItem);
+            if (random > 0.6)
+                item.src = "http://localhost:2368/content/images/2017/06/gateau-pizza-alimentation-insolite.jpg";
+            else if (random > 0.3)
+                item.src = "http://localhost:2368/content/images/2017/05/2208df36fc9e64f723f7b7f92acc7bf4.jpg";
+            else
+                item.src = "http://localhost:2368/content/images/2017/05/648x415_visuel-presentation-debat-4-avril-2017-entre-11-candidats-premier-tour-election-presidentielle-diffuse-bfmtv-cnews.jpg";
+            item.idx = idx;
+            return item
         });
 
-        $gallery.magnificPopup({
-            delegate: 'a',
-            type: 'image',
-            gallery: {
-                enabled: true,
-                preload: [0, 2], // read about this option in next Lazy-loading section
-                navigateByImgClick: true,
-                arrowMarkup: '', // markup of an arrow button
-                tPrev: 'Previous (Left arrow key)',
-                tNext: 'Next (Right arrow key)',
-                tCounter: '<span class="mfp-counter">%curr% / %total%</span>' // markup of counter
-            }
-        });
+        var $gallery = $('#gallery');
+        var gallery = new MyGallery($gallery, _GALLERY, {
+            columns: 3,
+            firstItemWidth: 2,
+            onRender: function () {
+                $gallery.magnificPopup({
+                    delegate: 'a',
+                    type: 'image',
+                    gallery: {
+                        enabled: true,
+                        preload: [0, 2],
+                        navigateByImgClick: true,
+                        arrowMarkup: '',
+                        tPrev: 'Previous',
+                        tNext: 'Next',
+                        tCounter: '<span class="mfp-counter">%curr% / %total%</span>'
+                    }
+                });
 
-        $gallery.imagesLoaded(function () {
-            $gallery.isotope({
-                itemSelector: '.grid-item',
-                percentPosition: true,
-                masonry: {
-                    // set to the element
-                    columnWidth: '.grid-sizer'
+                var openIdx = parseInt(window.location.hash.substr(1));
+                if (!isNaN(openIdx)) {
+                    openIdx--;
+                    var $currentItem = $('.gallery-item[data-gallery-item-idx=' + openIdx + '] a');
+                    if ($currentItem.length)
+                        $currentItem.click()
                 }
-            });
-        });
+            }
+        })
+
     }
+
 }
