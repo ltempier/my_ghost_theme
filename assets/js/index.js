@@ -145,50 +145,41 @@ function carouselProcess() {
 
 function galleryProcess() {
 
-    if (_GALLERY && _GALLERY.length) {
+    if ($('.gallery-container').length) {
 
-        //TODO remove
-        _GALLERY = _GALLERY.map(function (item, idx) {
-            var random = Math.random();
-            if (random > 0.6)
-                item.src = "http://localhost:2368/content/images/2017/06/gateau-pizza-alimentation-insolite.jpg";
-            else if (random > 0.3)
-                item.src = "http://localhost:2368/content/images/2017/05/2208df36fc9e64f723f7b7f92acc7bf4.jpg";
-            else
-                item.src = "http://localhost:2368/content/images/2017/05/648x415_visuel-presentation-debat-4-avril-2017-entre-11-candidats-premier-tour-election-presidentielle-diffuse-bfmtv-cnews.jpg";
-            item.idx = idx;
-            return item
-        });
+        $('.gallery-container').each(function () {
 
-        var $gallery = $('#gallery');
-        var gallery = new MyGallery($gallery, _GALLERY, {
-            columns: 3,
-            firstItemWidth: 2,
-            onRender: function () {
-                $gallery.magnificPopup({
-                    delegate: 'a',
-                    type: 'image',
-                    gallery: {
-                        enabled: true,
-                        preload: [0, 2],
-                        navigateByImgClick: true,
-                        arrowMarkup: '',
-                        tPrev: 'Previous',
-                        tNext: 'Next',
-                        tCounter: '<span class="mfp-counter">%curr% / %total%</span>'
-                    }
-                });
+            var src = [];
+            var $gallery = $(this);
 
-                var openIdx = parseInt(window.location.hash.substr(1));
-                if (!isNaN(openIdx)) {
-                    openIdx--;
-                    var $currentItem = $('.gallery-item[data-gallery-item-idx=' + openIdx + '] a');
-                    if ($currentItem.length)
-                        $currentItem.click()
+            $gallery.find("img").each(function () {
+                src.push({src: $(this).attr("src")})
+            });
+
+            $gallery.empty();
+
+            var gallery = new MyGallery($gallery, {
+                columns: 3,
+                firstItemWidth: 2,
+                onItemRender: function () {
+
+                    $gallery.magnificPopup({
+                        delegate: 'a',
+                        type: 'image',
+                        gallery: {
+                            enabled: true,
+                            preload: [0, 2],
+                            navigateByImgClick: true,
+                            arrowMarkup: '',
+                            tPrev: 'Previous',
+                            tNext: 'Next',
+                            tCounter: '<span class="mfp-counter">%curr% / %total%</span>'
+                        }
+                    });
                 }
-            }
-        })
 
+            });
+            gallery.setListItemByBatch(src, 3)
+        });
     }
-
 }

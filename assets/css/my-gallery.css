@@ -1,13 +1,4 @@
 
-html {
-    height: 100%;
-}
-
-body {
-    height: 100%;
-    margin: 0;
-}
-
 .my-gallery-lib {
     position: relative;
     width: 100%;
@@ -29,6 +20,10 @@ body {
 }
 
 @media (max-width: 500px) {
+    .my-gallery-lib{
+        height: auto !important;
+    }
+
     .my-gallery-lib .gallery-item {
         position: relative !important;
         width: 100% !important;

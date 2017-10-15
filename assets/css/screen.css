@@ -59,10 +59,14 @@ a:link {
     letter-spacing: -2px;
     text-align: center;
     margin-bottom: 20px;
-    color: black;
     border-bottom: solid 3px black;
     padding: 60px 0 75px 0;
     width: 100%;
+}
+
+.post-title *,
+.post-title *:hover {
+    color: black;
 }
 
 .post-title.fixed {
@@ -71,10 +75,14 @@ a:link {
     top: 0;
     z-index: 10;
     background: black;
-    color: white;
     opacity: 0.7;
     padding: 3px 0 10px 0;
     margin-top: 0 !important;
+}
+
+.post-title.fixed *,
+.post-title.fixed *:hover {
+    color: white !important;
 }
 
 .post-title.fixed .underlay {
@@ -262,18 +270,19 @@ a:link {
     margin-left: 3px !important;
 }
 
-.gallery-container {
-    padding-top: 30px;
-    padding-bottom: 30px;
+.gallery-container img {
+    margin: 0;
 }
 
 @media (min-width: 768px) {
     .container-small {
-        width: 700px;
+        width: 750px;
     }
+
 }
 
 @media (max-width: 768px) {
+
     .page-title,
     .post-title {
         font-size: 50px;

@@ -4,7 +4,7 @@
 
 
     <div class="post-title">
-        {{title}}
+        <a href="{{@blog.url}}">{{title}}</a>
 
             <!--{{#if image}}-->
         <!--<div class="underlay repeat" style="background-image: url({{image}});"></div>-->
@@ -13,11 +13,12 @@
 
 
     {{#if featured}}
-        <div class="container post-container gallery-container">
-            <div id="gallery"></div>
-        </div>
-        <div class="hide">
-            {{content}}
+        <div class="container post-container">
+            <div class="row">
+                <div class="col-sm-12 post-content">
+                    {{content}}
+                </div>
+            </div>
         </div>
     {{else}}
         <div class="container post-container container-small">
@@ -41,11 +42,7 @@
                     {{#next_post}}
                         <a class="post-footer-link" href="{{url}}">
                             <h3>{{title}}</h3>
-                            {{#if featured}}
-
-                            {{else}}
-                                <p>{{excerpt words="19"}} ...</p>
-                            {{/if}}
+                            <p>{{excerpt words="19"}} ...</p>
                         </a>
                     {{/next_post}}
                 </div>
@@ -61,11 +58,7 @@
                     {{#prev_post}}
                         <a class="post-footer-link" href="{{url}}">
                             <h3>{{title}}</h3>
-                            {{#if featured}}
-
-                            {{else}}
-                                <p>{{excerpt words="19"}} ...</p>
-                            {{/if}}
+                            <p>{{excerpt words="19"}} ...</p>
                         </a>
                     {{/prev_post}}
                 </div>
@@ -73,10 +66,6 @@
 
             </div>
         </div>
-
     </div>
-
-
-
 
 {{/post}}
