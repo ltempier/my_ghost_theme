@@ -1,54 +1,38 @@
 <div class="row">
 
     {{#foreach posts}}
-
-        <div class="col-md-4 col-sm-6">
-
-            <a href="{{url}}">
-
+        <a href="{{url}}">
+            <div class="col-md-4 col-sm-6">
                 <div class="list-post-item">
 
                     {{#if image}}
                         <div class="underlay selectable" style="background-image: url({{image}});"></div>
                     {{/if}}
 
-
                     <h2 class="">{{title}}</h2>
-
-                    {{#if featured}}
-
-                    {{else}}
-                        <p>{{excerpt words="40"}} ...</p>
-                    {{/if}}
-
+                    <div class="description">
+                        <p>
+                            {{excerpt words="60"}}
+                        </p>
+                    </div>
 
                     {{> "tags"}}
 
-                    <footer class="">
-                        <time class="post-date"
-                              datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMMM YYYY"}}</time>
-                    </footer>
+                    <time class="post-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMMM YYYY"}}</time>
                 </div>
-
-            </a>
-
-        </div>
+            </div>
+        </a>
 
     {{/foreach}}
-
-    <div class="col-md-4 col-sm-6">
-
-        <a href="/map">
+    <a href="/map">
+        <div class="col-md-4 col-sm-6">
             <div id="map" class="list-post-item">
                 <header class="">
                     <h2 class="">Map</h2>
                 </header>
-                <section class="">
-                    <p>See where we are ...</p>
-                </section>
             </div>
-        </a>
-    </div>
+        </div>
+    </a>
 
 </div>
 

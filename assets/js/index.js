@@ -28,38 +28,51 @@
 
         }
 
+        try {
+            $('[data-remodal-id=modal]').remodal({});
+            imagePopupProcess()
+        } catch (e) {
 
-        //try {
-        //    konamiProcess()
-        //} catch (e) {
-        //
-        //}
+        }
 
     });
 
 })(jQuery);
 
-function imgurProcess() {
-    $('img').each(function () {
-        var $imgur = $("<div class='imgur-img-process'></div>");
-        var imgClass = $(this).attr('class');
+//function imgurProcess() {
+//    $('img').each(function () {
+//        var $imgur = $("<div class='imgur-img-process'></div>");
+//        var imgClass = $(this).attr('class');
+//
+//        $imgur.attr('class', imgClass);
+//        $(this).attr('class', '');
+//        $imgur.css('background', 'url("' + getImgurLight(this.src) + '") center center no-repeat');
+//        $(this).wrap($imgur);
+//
+//    })
+//}
 
-        $imgur.attr('class', imgClass);
-        $(this).attr('class', '');
-        $imgur.css('background', 'url("' + getImgurLight(this.src) + '") center center no-repeat');
-        $(this).wrap($imgur);
-
-    })
+function isImgurUrl(src) {
+    var srcRegex = new RegExp('imgur\.com/(.*)\.jpg', 'g');
+    return srcRegex.test(src)
 }
 
-
 function getImgurLight(src) {
-    var srcRegex = new RegExp('imgur\.com/(.*)\.jpg', 'g');
-    if (srcRegex.test(src)) {
+    if (isImgurUrl(src)) {
         var light = src.split('/');
         var id = light.pop().substring(0, 7);
         light.push(id + 'h.jpg');
         return light.join('/');
+    }
+    return src
+}
+
+function getImgurHight(src) {
+    if (isImgurUrl(src)) {
+        var hight = src.split('/');
+        var id = hight.pop().substring(0, 7);
+        hight.push(id + '.jpg');
+        return hight.join('/');
     }
     return src
 }
@@ -162,24 +175,57 @@ function galleryProcess() {
                 columns: 3,
                 firstItemWidth: 2,
                 onItemRender: function () {
+                    imagePopupProcess()
+                },
+                onGalleryRender: function () {
 
-                    $gallery.magnificPopup({
-                        delegate: 'a',
-                        type: 'image',
-                        gallery: {
-                            enabled: true,
-                            preload: [0, 2],
-                            navigateByImgClick: true,
-                            arrowMarkup: '',
-                            tPrev: 'Previous',
-                            tNext: 'Next',
-                            tCounter: '<span class="mfp-counter">%curr% / %total%</span>'
-                        }
-                    });
                 }
 
             });
             gallery.setListItemByBatch(src, 3)
+        });
+    }
+}
+
+
+var bufferImagePopupProcess = {};
+
+function imagePopupProcess() {
+
+    var modal = $('[data-remodal-id=modal]').remodal();
+
+    var $content = $('.modal-content-gallery');
+    $content.empty();
+
+
+    $('.post-container img').each(function (idx) {
+        //var src = getImgurHight(this.src);
+        var src = this.src;
+
+        $(this).unbind('click');
+        $(this).on('click', function (e) {
+            e.preventDefault();
+            modal.open();
+            $content.slick('slickGoTo', idx);
+            $(window).trigger('resize');
+        });
+
+        $(this).css('cursor', 'zoom-in');
+        $content.append('<img src="' + src + '"/>')
+    });
+
+
+    if ($content.find('img').length > 0) {
+        try {
+            $content.slick('unslick');
+        } catch (e) {
+
+        }
+        $content.slick({
+            infinite: true,
+            adaptiveHeight: true,
+            prevArrow: '<button class="btn slick-arrow slick-prev"><i class="glyphicon glyphicon-triangle-left"></i></button>',
+            nextArrow: '<button class="btn slick-arrow slick-next"><i class="glyphicon glyphicon-triangle-right"></i></button>'
         });
     }
 }

@@ -257,9 +257,9 @@ class MyGallery {
                 $galleryItem.addClass('resized');
             setGalleryItemCss();
             $galleryItem.append([
-                '<a href="' + item.src + '">',
+                //'<a href="' + item.src + '">',
                 '<img src="' + item.src + '" alt="' + item.alt + '"/>',
-                '</a>'
+                //'</a>'
             ].join(''));
             this.$gallery.append($galleryItem);
         }
