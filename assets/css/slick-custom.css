@@ -10,7 +10,7 @@
 }
 
 /*.slick-loading .slick-list {*/
-    /*background: #fff url('../images/ajax-loader.gif') center center no-repeat;*/
+/*background: #fff url('../images/ajax-loader.gif') center center no-repeat;*/
 /*}*/
 
 .slick-arrow {
@@ -21,20 +21,20 @@
     border-radius: 0;
 
     background-color: transparent;
-    /*color: black;*/
-    /*border: solid 3px black;*/
+    color: black;
+    border: solid 3px black;
 
-    color: white;
-    border: solid 3px white;
+    /*color: white;*/
+    /*border: solid 3px white;*/
 }
 
 .slick-arrow:hover,
 .slick-arrow:focus {
-    /*color: white;*/
-    /*border: solid 3px white;*/
+    color: white;
+    border: solid 3px white;
 
-    color: black;
-    border: solid 3px black;
+    /*color: black;*/
+    /*border: solid 3px black;*/
 }
 
 .slick-prev {

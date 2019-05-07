@@ -1,43 +1,40 @@
 "use strict";
 
-(function ($, undefined) {
-    "use strict";
 
-    var $document = $(document);
-
-    $document.ready(function () {
-        var $postContent = $(".post-content");
-        $postContent.fitVids();
+$(document).ready(function () {
 
 
-        try {
-            postTitleProcess()
-        } catch (e) {
+    // try { //A lightweight, easy-to-use jQuery plugin for fluid width video embeds.
+    // var $postContent = $(".post-content");
+    // $postContent.fitVids();
+    // } catch (e) {
+    // }
 
-        }
+    try {
+        postTitleProcess()
+    } catch (e) {
 
-        try {
-            carouselProcess()
-        } catch (e) {
+    }
 
-        }
+    try {
+        carouselProcess()
+    } catch (e) {
 
-        try {
-            galleryProcess()
-        } catch (e) {
+    }
 
-        }
+    try {
+        galleryProcess()
+    } catch (e) {
 
-        try {
-            $('[data-remodal-id=modal]').remodal({});
-            imagePopupProcess()
-        } catch (e) {
+    }
 
-        }
+    try {
+        imagePopupProcess()
+    } catch (e) {
 
-    });
+    }
+});
 
-})(jQuery);
 
 //function imgurProcess() {
 //    $('img').each(function () {
@@ -52,30 +49,30 @@
 //    })
 //}
 
-function isImgurUrl(src) {
-    var srcRegex = new RegExp('imgur\.com/(.*)\.jpg', 'g');
-    return srcRegex.test(src)
-}
+// function isImgurUrl(src) {
+//     var srcRegex = new RegExp('imgur\.com/(.*)\.jpg', 'g');
+//     return srcRegex.test(src)
+// }
 
-function getImgurLight(src) {
-    if (isImgurUrl(src)) {
-        var light = src.split('/');
-        var id = light.pop().substring(0, 7);
-        light.push(id + 'h.jpg');
-        return light.join('/');
-    }
-    return src
-}
-
-function getImgurHight(src) {
-    if (isImgurUrl(src)) {
-        var hight = src.split('/');
-        var id = hight.pop().substring(0, 7);
-        hight.push(id + '.jpg');
-        return hight.join('/');
-    }
-    return src
-}
+// function getImgurLight(src) {
+//     if (isImgurUrl(src)) {
+//         var light = src.split('/');
+//         var id = light.pop().substring(0, 7);
+//         light.push(id + 'h.jpg');
+//         return light.join('/');
+//     }
+//     return src
+// }
+//
+// function getImgurHight(src) {
+//     if (isImgurUrl(src)) {
+//         var hight = src.split('/');
+//         var id = hight.pop().substring(0, 7);
+//         hight.push(id + '.jpg');
+//         return hight.join('/');
+//     }
+//     return src
+// }
 
 function konamiProcess() {
     var $items = $('.list-post-item');
@@ -166,10 +163,14 @@ function galleryProcess() {
             var $gallery = $(this);
 
             $gallery.find("img").each(function () {
-                src.push({src: $(this).attr("src")})
+                src.push({src: "" + $(this).attr("src")});
+                $(this).attr("src", "")
             });
 
             $gallery.empty();
+
+            var $loader = $('<div class="loader"/>');
+            $loader.insertAfter($gallery);
 
             var gallery = new MyGallery($gallery, {
                 columns: 3,
@@ -178,7 +179,8 @@ function galleryProcess() {
                     imagePopupProcess()
                 },
                 onGalleryRender: function () {
-
+                    console.log('onGalleryRender');
+                    $loader.remove()
                 }
 
             });
@@ -188,44 +190,44 @@ function galleryProcess() {
 }
 
 
-var bufferImagePopupProcess = {};
+var bufferImagePopupProcess = null;
 
 function imagePopupProcess() {
 
     var modal = $('[data-remodal-id=modal]').remodal();
-
     var $content = $('.modal-content-gallery');
-    $content.empty();
 
+    if (bufferImagePopupProcess == null) {
+        bufferImagePopupProcess = 0;
+        $content.slick({
+            lazyLoad: 'ondemand',
+            infinite: true,
+            adaptiveHeight: true,
+            // variableWidth: true,
+            // centerMode: true,
+
+            prevArrow: '<button class="btn slick-arrow slick-prev"><i class="glyphicon glyphicon-triangle-left"></i></button>',
+            nextArrow: '<button class="btn slick-arrow slick-next"><i class="glyphicon glyphicon-triangle-right"></i></button>'
+        });
+    }
 
     $('.post-container img').each(function (idx) {
         //var src = getImgurHight(this.src);
         var src = this.src;
 
-        $(this).unbind('click');
-        $(this).on('click', function (e) {
-            e.preventDefault();
-            modal.open();
-            $content.slick('slickGoTo', idx);
-            $(window).trigger('resize');
-        });
+        if (idx >= bufferImagePopupProcess) {
+            $content.slick('slickAdd', '<img src="' + src + '"/>');
 
-        $(this).css('cursor', 'zoom-in');
-        $content.append('<img src="' + src + '"/>')
-    });
+            $(this).css('cursor', 'zoom-in');
+            $(this).unbind('click');
+            $(this).on('click', function (e) {
+                e.preventDefault();
+                $content.slick('slickGoTo', idx);
+                modal.open();
+                $content.slick('refresh') //little hack
+            });
 
-
-    if ($content.find('img').length > 0) {
-        try {
-            $content.slick('unslick');
-        } catch (e) {
-
+            bufferImagePopupProcess++
         }
-        $content.slick({
-            infinite: true,
-            adaptiveHeight: true,
-            prevArrow: '<button class="btn slick-arrow slick-prev"><i class="glyphicon glyphicon-triangle-left"></i></button>',
-            nextArrow: '<button class="btn slick-arrow slick-next"><i class="glyphicon glyphicon-triangle-right"></i></button>'
-        });
-    }
+    });
 }

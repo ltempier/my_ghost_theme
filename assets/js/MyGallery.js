@@ -51,6 +51,7 @@ class MyGallery {
     }
 
     setListItemByBatch(listItem, batch) {
+        this._listItemLength = listItem.length;
         this._listItem = [];
         this.init();
 
@@ -71,9 +72,10 @@ class MyGallery {
                 var item = listItem[buffer + i];
 
                 self.getImageSize(item, function (err, item) {
-
-                    if (err)
+                    if (err) {
+                        self._listItemLength -= 1;
                         console.log(err);
+                    }
                     else {
                         if (item.idx == null)
                             item.idx = itemIdx;
@@ -100,8 +102,9 @@ class MyGallery {
     process() {
 
         for (var itemIdx = this._itemIdx; itemIdx < this._listItem.length; itemIdx++) {
+
             var originItem = this._listItem.find(function (item) {
-                return item.idx == itemIdx
+                return item.idx === itemIdx
             });
 
             if (originItem) {
@@ -170,7 +173,8 @@ class MyGallery {
                         this._galleryHeightPixel = this._bufferColumnsHeight[i];
                 }
                 this.renderItem(item)
-            } else
+            }
+            else
                 break
         }
         this._itemIdx = itemIdx;
@@ -267,7 +271,7 @@ class MyGallery {
 
         if (this.onItemRender && $.isFunction(this.onItemRender))
             this.onItemRender($galleryItem);
-        if (this._itemIdx == (this._listItem.length - 1) && $.isFunction(this.onGalleryRender))
+        if (this._itemIdx === (this._listItemLength - 2) && $.isFunction(this.onGalleryRender))
             this.onGalleryRender(this.$gallery);
     }
 }

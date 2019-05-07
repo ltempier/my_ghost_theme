@@ -6,9 +6,10 @@
     <div class="post-title">
         <a href="{{@blog.url}}">{{title}}</a>
 
-            <!--{{#if image}}-->
-        <!--<div class="underlay repeat" style="background-image: url({{image}});"></div>-->
-            <!--{{/if}}-->
+        {{#if image}}
+            <meta property="og:image" content="{{@blog.url}}{{image}}"/>
+            <!--<div class="underlay repeat" style="background-image: url({{image}});"></div>-->
+        {{/if}}
     </div>
 
 
@@ -70,8 +71,7 @@
 
     <div data-remodal-id="modal">
         <button data-remodal-action="close" class="remodal-close"></button>
-        <div class="modal-content-gallery">
-        </div>
+        <div class="modal-content-gallery"></div>
     </div>
 
 {{/post}}

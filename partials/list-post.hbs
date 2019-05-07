@@ -1,5 +1,6 @@
 <div class="row">
 
+
     {{#foreach posts}}
         <a href="{{url}}">
             <div class="col-md-4 col-sm-6">
@@ -27,6 +28,7 @@
     <a href="/map">
         <div class="col-md-4 col-sm-6">
             <div id="map" class="list-post-item">
+                <div class="underlay selectable" style="background-image: url({{asset "images/map_overlay.jpg"}});"></div>
                 <header class="">
                     <h2 class="">Map</h2>
                 </header>
